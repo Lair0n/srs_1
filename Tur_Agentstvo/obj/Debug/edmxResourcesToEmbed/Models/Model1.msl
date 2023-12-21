@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище AgentstvoModelContainer" CdmEntityContainer="AgentstvoEntities">
+    <EntitySetMapping Name="Avtorizacia">
+      <EntityTypeMapping TypeName="AgentstvoModel.Avtorizacia">
+        <MappingFragment StoreEntitySet="Avtorizacia">
+          <ScalarProperty Name="ID_Avtorizacii" ColumnName="ID_Avtorizacii" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bronirovanie">
+      <EntityTypeMapping TypeName="AgentstvoModel.Bronirovanie">
+        <MappingFragment StoreEntitySet="Bronirovanie">
+          <ScalarProperty Name="ID_Bronirovania" ColumnName="ID_Bronirovania" />
+          <ScalarProperty Name="ID_Clienta" ColumnName="ID_Clienta" />
+          <ScalarProperty Name="ID_Tura" ColumnName="ID_Tura" />
+          <ScalarProperty Name="Data_broni" ColumnName="Data_broni" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="AgentstvoModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="ID_Clienta" ColumnName="ID_Clienta" />
+          <ScalarProperty Name="Familia" ColumnName="Familia" />
+          <ScalarProperty Name="Imya" ColumnName="Imya" />
+          <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+          <ScalarProperty Name="Contactniy_telephone" ColumnName="Contactniy_telephone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Doljnost">
+      <EntityTypeMapping TypeName="AgentstvoModel.Doljnost">
+        <MappingFragment StoreEntitySet="Doljnost">
+          <ScalarProperty Name="ID_Doljnost" ColumnName="ID_Doljnost" />
+          <ScalarProperty Name="Doljnost1" ColumnName="Doljnost" />
+          <ScalarProperty Name="Zarplata" ColumnName="Zarplata" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Otzivy">
+      <EntityTypeMapping TypeName="AgentstvoModel.Otzivy">
+        <MappingFragment StoreEntitySet="Otzivy">
+          <ScalarProperty Name="ID_Otziva" ColumnName="ID_Otziva" />
+          <ScalarProperty Name="Otziv" ColumnName="Otziv" />
+          <ScalarProperty Name="Data_napisania" ColumnName="Data_napisania" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sotrudnik">
+      <EntityTypeMapping TypeName="AgentstvoModel.Sotrudnik">
+        <MappingFragment StoreEntitySet="Sotrudnik">
+          <ScalarProperty Name="ID_Sotrudnika" ColumnName="ID_Sotrudnika" />
+          <ScalarProperty Name="Familia" ColumnName="Familia" />
+          <ScalarProperty Name="Imya" ColumnName="Imya" />
+          <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+          <ScalarProperty Name="Contactniy_telephone" ColumnName="Contactniy_telephone" />
+          <ScalarProperty Name="ID_Doljnost" ColumnName="ID_Doljnost" />
+          <ScalarProperty Name="ID_Avtorizacii" ColumnName="ID_Avtorizacii" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="AgentstvoModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tur">
+      <EntityTypeMapping TypeName="AgentstvoModel.Tur">
+        <MappingFragment StoreEntitySet="Tur">
+          <ScalarProperty Name="ID_Tura" ColumnName="ID_Tura" />
+          <ScalarProperty Name="Mesto_tura" ColumnName="Mesto_tura" />
+          <ScalarProperty Name="Data_nachala" ColumnName="Data_nachala" />
+          <ScalarProperty Name="Data_konca" ColumnName="Data_konca" />
+          <ScalarProperty Name="stoimosti" ColumnName="stoimosti" />
+          <ScalarProperty Name="ID_Sotrudnika" ColumnName="ID_Sotrudnika" />
+          <ScalarProperty Name="ID_Avtorizacii" ColumnName="ID_Avtorizacii" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Tur_Otziv" TypeName="AgentstvoModel.Tur_Otziv" StoreEntitySet="Tur-Otziv">
+      <EndProperty Name="Otzivy">
+        <ScalarProperty Name="ID_Otziva" ColumnName="ID_Otziva" />
+      </EndProperty>
+      <EndProperty Name="Tur">
+        <ScalarProperty Name="ID_Tura" ColumnName="ID_Tura" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Tur_Sotrudnik" TypeName="AgentstvoModel.Tur_Sotrudnik" StoreEntitySet="Tur-Sotrudnik">
+      <EndProperty Name="Sotrudnik">
+        <ScalarProperty Name="ID_Sotrudnika" ColumnName="ID_Sotrudnika" />
+      </EndProperty>
+      <EndProperty Name="Tur">
+        <ScalarProperty Name="ID_Tura" ColumnName="ID_Tura" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,16 @@
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\bin\Debug\AddUser.exe.config
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\bin\Debug\AddUser.exe
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\bin\Debug\AddUser.pdb
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\bin\Debug\HashPasswords.dll
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\bin\Debug\Tur_Agentstvo.exe
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\bin\Debug\HashPasswords.pdb
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\bin\Debug\Tur_Agentstvo.pdb
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\bin\Debug\Tur_Agentstvo.exe.config
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\bin\Debug\EntityFramework.xml
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\bin\Debug\ru\EntityFramework.resources.dll
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\obj\Debug\AddUser.csproj.AssemblyReference.cache
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\obj\Debug\AddUser.csproj.CoreCompileInputs.cache
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\obj\Debug\AddUser.csproj.CopyComplete
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\obj\Debug\AddUser.exe
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\obj\Debug\AddUser.pdb
+D:\ИТ\Moduls_Serega\Tur_Agentstvo\AddUser\obj\Debug\AddUser.csproj.SuggestedBindingRedirects.cache

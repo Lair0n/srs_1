@@ -1,0 +1,200 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AgentstvoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Avtorizacia">
+    <Key>
+      <PropertyRef Name="ID_Avtorizacii" />
+    </Key>
+    <Property Name="ID_Avtorizacii" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Sotrudnik" Relationship="Self.FK_Sotrudnik_Avtorizacia" FromRole="Avtorizacia" ToRole="Sotrudnik" />
+    <NavigationProperty Name="Tur" Relationship="Self.FK_Tur_Avtorizacia" FromRole="Avtorizacia" ToRole="Tur" />
+  </EntityType>
+  <EntityType Name="Bronirovanie">
+    <Key>
+      <PropertyRef Name="ID_Bronirovania" />
+    </Key>
+    <Property Name="ID_Bronirovania" Type="Int32" Nullable="false" />
+    <Property Name="ID_Clienta" Type="Int32" Nullable="false" />
+    <Property Name="ID_Tura" Type="Int32" Nullable="false" />
+    <Property Name="Data_broni" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Bronirovanie_Client" FromRole="Bronirovanie" ToRole="Client" />
+    <NavigationProperty Name="Tur" Relationship="Self.FK_Bronirovanie_Tur" FromRole="Bronirovanie" ToRole="Tur" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID_Clienta" />
+    </Key>
+    <Property Name="ID_Clienta" Type="Int32" Nullable="false" />
+    <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Imya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contactniy_telephone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Bronirovanie" Relationship="Self.FK_Bronirovanie_Client" FromRole="Client" ToRole="Bronirovanie" />
+  </EntityType>
+  <EntityType Name="Doljnost">
+    <Key>
+      <PropertyRef Name="ID_Doljnost" />
+    </Key>
+    <Property Name="ID_Doljnost" Type="Int32" Nullable="false" />
+    <Property Name="Doljnost1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Zarplata" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Sotrudnik" Relationship="Self.FK_Sotrudnik_Doljnost" FromRole="Doljnost" ToRole="Sotrudnik" />
+  </EntityType>
+  <EntityType Name="Otzivy">
+    <Key>
+      <PropertyRef Name="ID_Otziva" />
+    </Key>
+    <Property Name="ID_Otziva" Type="Int32" Nullable="false" />
+    <Property Name="Otziv" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Data_napisania" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Tur" Relationship="Self.Tur_Otziv" FromRole="Otzivy" ToRole="Tur" />
+  </EntityType>
+  <EntityType Name="Sotrudnik">
+    <Key>
+      <PropertyRef Name="ID_Sotrudnika" />
+    </Key>
+    <Property Name="ID_Sotrudnika" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Imya" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Contactniy_telephone" Type="String" MaxLength="15" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="ID_Doljnost" Type="Int32" Nullable="false" />
+    <Property Name="ID_Avtorizacii" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Avtorizacia" Relationship="Self.FK_Sotrudnik_Avtorizacia" FromRole="Sotrudnik" ToRole="Avtorizacia" />
+    <NavigationProperty Name="Doljnost" Relationship="Self.FK_Sotrudnik_Doljnost" FromRole="Sotrudnik" ToRole="Doljnost" />
+    <NavigationProperty Name="Tur" Relationship="Self.Tur_Sotrudnik" FromRole="Sotrudnik" ToRole="Tur" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Tur">
+    <Key>
+      <PropertyRef Name="ID_Tura" />
+    </Key>
+    <Property Name="ID_Tura" Type="Int32" Nullable="false" />
+    <Property Name="Mesto_tura" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Data_nachala" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Data_konca" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="stoimosti" Type="Int32" Nullable="false" />
+    <Property Name="ID_Sotrudnika" Type="Int32" Nullable="false" />
+    <Property Name="ID_Avtorizacii" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Avtorizacia" Relationship="Self.FK_Tur_Avtorizacia" FromRole="Tur" ToRole="Avtorizacia" />
+    <NavigationProperty Name="Bronirovanie" Relationship="Self.FK_Bronirovanie_Tur" FromRole="Tur" ToRole="Bronirovanie" />
+    <NavigationProperty Name="Otzivy" Relationship="Self.Tur_Otziv" FromRole="Tur" ToRole="Otzivy" />
+    <NavigationProperty Name="Sotrudnik" Relationship="Self.Tur_Sotrudnik" FromRole="Tur" ToRole="Sotrudnik" />
+  </EntityType>
+  <Association Name="FK_Sotrudnik_Avtorizacia">
+    <End Role="Avtorizacia" Type="Self.Avtorizacia" Multiplicity="1" />
+    <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avtorizacia">
+        <PropertyRef Name="ID_Avtorizacii" />
+      </Principal>
+      <Dependent Role="Sotrudnik">
+        <PropertyRef Name="ID_Avtorizacii" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tur_Avtorizacia">
+    <End Role="Avtorizacia" Type="Self.Avtorizacia" Multiplicity="1" />
+    <End Role="Tur" Type="Self.Tur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Avtorizacia">
+        <PropertyRef Name="ID_Avtorizacii" />
+      </Principal>
+      <Dependent Role="Tur">
+        <PropertyRef Name="ID_Avtorizacii" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bronirovanie_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Bronirovanie" Type="Self.Bronirovanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID_Clienta" />
+      </Principal>
+      <Dependent Role="Bronirovanie">
+        <PropertyRef Name="ID_Clienta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bronirovanie_Tur">
+    <End Role="Tur" Type="Self.Tur" Multiplicity="1" />
+    <End Role="Bronirovanie" Type="Self.Bronirovanie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tur">
+        <PropertyRef Name="ID_Tura" />
+      </Principal>
+      <Dependent Role="Bronirovanie">
+        <PropertyRef Name="ID_Tura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Sotrudnik_Doljnost">
+    <End Role="Doljnost" Type="Self.Doljnost" Multiplicity="1" />
+    <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Doljnost">
+        <PropertyRef Name="ID_Doljnost" />
+      </Principal>
+      <Dependent Role="Sotrudnik">
+        <PropertyRef Name="ID_Doljnost" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Tur_Otziv">
+    <End Role="Otzivy" Type="Self.Otzivy" Multiplicity="*" />
+    <End Role="Tur" Type="Self.Tur" Multiplicity="*" />
+  </Association>
+  <Association Name="Tur_Sotrudnik">
+    <End Role="Sotrudnik" Type="Self.Sotrudnik" Multiplicity="*" />
+    <End Role="Tur" Type="Self.Tur" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="AgentstvoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Avtorizacia" EntityType="Self.Avtorizacia" />
+    <EntitySet Name="Bronirovanie" EntityType="Self.Bronirovanie" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Doljnost" EntityType="Self.Doljnost" />
+    <EntitySet Name="Otzivy" EntityType="Self.Otzivy" />
+    <EntitySet Name="Sotrudnik" EntityType="Self.Sotrudnik" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Tur" EntityType="Self.Tur" />
+    <AssociationSet Name="FK_Sotrudnik_Avtorizacia" Association="Self.FK_Sotrudnik_Avtorizacia">
+      <End Role="Avtorizacia" EntitySet="Avtorizacia" />
+      <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tur_Avtorizacia" Association="Self.FK_Tur_Avtorizacia">
+      <End Role="Avtorizacia" EntitySet="Avtorizacia" />
+      <End Role="Tur" EntitySet="Tur" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bronirovanie_Client" Association="Self.FK_Bronirovanie_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Bronirovanie" EntitySet="Bronirovanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bronirovanie_Tur" Association="Self.FK_Bronirovanie_Tur">
+      <End Role="Tur" EntitySet="Tur" />
+      <End Role="Bronirovanie" EntitySet="Bronirovanie" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Sotrudnik_Doljnost" Association="Self.FK_Sotrudnik_Doljnost">
+      <End Role="Doljnost" EntitySet="Doljnost" />
+      <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+    </AssociationSet>
+    <AssociationSet Name="Tur_Otziv" Association="Self.Tur_Otziv">
+      <End Role="Otzivy" EntitySet="Otzivy" />
+      <End Role="Tur" EntitySet="Tur" />
+    </AssociationSet>
+    <AssociationSet Name="Tur_Sotrudnik" Association="Self.Tur_Sotrudnik">
+      <End Role="Sotrudnik" EntitySet="Sotrudnik" />
+      <End Role="Tur" EntitySet="Tur" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
